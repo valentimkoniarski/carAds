@@ -5,10 +5,8 @@ import com.example.api.model.Veiculo;
 import com.example.api.repository.UsuarioRepository;
 import com.example.api.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,16 +30,17 @@ public class VeiculoController {
     }
 
     @PostMapping("/create")
-    @Transactional
-    public ResponseEntity<VeiculoDto> create(@RequestBody @Valid VeiculoDto veiculoDto, UriComponentsBuilder uriBuilder) {
+    public Veiculo create(@RequestBody @Valid VeiculoDto veiculoDto) {
 
         Veiculo veiculo = veiculoDto.toVeiculo();
+
         veiculoRepository.save(veiculo);
 
-        return ResponseEntity.ok().body(veiculoDto);
+        return veiculo;
+
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public VeiculoDto detalhesVeiculo(@PathVariable("id") Long id) {
 
         Veiculo veiculo = veiculoRepository.getById(id);

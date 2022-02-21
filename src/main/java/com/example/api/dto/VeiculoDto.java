@@ -12,13 +12,15 @@ public class VeiculoDto {
     private Long id;
     private Usuario usuario;
 
+    public VeiculoDto() {
+    }
+
     public VeiculoDto(Veiculo veiculo) {
         this.marca = veiculo.getMarca();
         this.modelo = veiculo.getModelo();
         this.ano = veiculo.getAno();
         this.descricao = veiculo.getDescricao();
         this.id = veiculo.getId();
-        this.usuario = veiculo.getUsuario();
     }
 
     public Long getId() {
