@@ -2,6 +2,7 @@ package com.example.api.model;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Veiculo {
 
@@ -16,6 +17,7 @@ public class Veiculo {
 	private String modelo;
 	private String ano;
 	private String descricao;
+
 
 	@Enumerated(EnumType.STRING)
 	private StatusVeiculo status = StatusVeiculo.A_VENDA;

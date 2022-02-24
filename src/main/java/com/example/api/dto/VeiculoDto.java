@@ -1,7 +1,10 @@
 package com.example.api.dto;
 
+import com.example.api.model.Fotos;
 import com.example.api.model.Usuario;
 import com.example.api.model.Veiculo;
+
+import java.util.Set;
 
 public class VeiculoDto {
 
@@ -12,6 +15,8 @@ public class VeiculoDto {
     private Long id;
     private Usuario usuario;
 
+
+
     public VeiculoDto() {
     }
 
@@ -21,6 +26,8 @@ public class VeiculoDto {
         this.ano = veiculo.getAno();
         this.descricao = veiculo.getDescricao();
         this.id = veiculo.getId();
+        this.usuario = veiculo.getUsuario();
+        
     }
 
     public Long getId() {
@@ -49,6 +56,8 @@ public class VeiculoDto {
 
     public Veiculo toVeiculo() {
         Veiculo veiculo = new Veiculo();
+
+        veiculo.setId(id);
         veiculo.setMarca(marca);
         veiculo.setModelo(modelo);
         veiculo.setAno(ano);
@@ -57,4 +66,5 @@ public class VeiculoDto {
 
         return veiculo;
     }
+
 }

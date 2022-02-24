@@ -1,7 +1,9 @@
 package com.example.api.controller;
 
 import com.example.api.dto.VeiculoDto;
+import com.example.api.model.Fotos;
 import com.example.api.model.Veiculo;
+import com.example.api.repository.FotosRepository;
 import com.example.api.repository.UsuarioRepository;
 import com.example.api.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,10 @@ import java.util.List;
 public class VeiculoController {
 
     @Autowired
-    VeiculoRepository veiculoRepository;
+    VeiculoRepository veiculoRepository; 
+
+    @Autowired
+    FotosRepository fotosRepository;
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -35,6 +40,11 @@ public class VeiculoController {
         Veiculo veiculo = veiculoDto.toVeiculo();
 
         veiculoRepository.save(veiculo);
+
+        Fotos fotos = new Fotos();
+        
+        fotosRepository.save(fotos);
+
 
         return veiculo;
 
